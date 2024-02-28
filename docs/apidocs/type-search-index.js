@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.github.tommyettinger.crux","l":"Point2"},{"p":"com.github.tommyettinger.crux","l":"Point3"},{"p":"com.github.tommyettinger.crux","l":"PointN"},{"p":"com.github.tommyettinger.crux","l":"PointPair"}];updateSearchResults();
