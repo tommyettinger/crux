@@ -3,8 +3,9 @@
 
 This library provides some small interfaces meant to be shared by (subclasses of)
 various incompatible types such as libGDX's GridPoint2, Vector2, GridPoint3, and
-Vector3, as well as SquidSquad's Coord. The code here was pulled from
-[gand](https://github.com/tommyettinger/gand), and now gand depends on this.
+Vector3, as well as SquidSquad's Coord, and potentially AWT's Point. The code here
+was pulled from [gand](https://github.com/tommyettinger/gand), and now gand
+depends on this.
 
 ## Installation
 
