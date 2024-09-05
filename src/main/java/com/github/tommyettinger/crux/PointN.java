@@ -101,25 +101,27 @@ public interface PointN<P extends PointN<P>> {
     float dst2(P point);
 
     /**
-     * Returns true if the distance from the origin to this point is 1 (within floating-point error of 0.000001f).
-     * @return true if this point has distance 1 from the origin, within a tolerance of 0.000001f
+     * Returns true if the squared distance from the origin to this point is 1 (within floating-point error of
+     * 0.000001f).
+     * @return true if this point has squared distance 1 from the origin, within a tolerance of 0.000001f
      */
     default boolean isUnit() {
         return Math.abs(1f - len2()) <= 0.000001f;
     }
 
     /**
-     * Returns true if the distance from the origin to this point is 1 (within the given tolerance up or down).
+     * Returns true if the squared distance from the origin to this point is 1 (within the given tolerance up or down).
      * @param tolerance how much floating-point error to tolerate and still treat this as equal to 1
-     * @return true if this point has distance 1 from the origin, within the given tolerance
+     * @return true if this point has squared distance 1 from the origin, within the given tolerance
      */
     default boolean isUnit(float tolerance){
         return Math.abs(1f - len2()) <= tolerance;
     }
 
     /**
-     * Returns true if the distance from the origin to this point is 0 (within floating-point error of 0.000001f).
-     * @return true if this point has distance 0 from the origin, within a tolerance of 0.000001f
+     * Returns true if the squared distance from the origin to this point is 0 (within floating-point error of
+     * 0.000001f).
+     * @return true if this point has squared distance 0 from the origin, within a tolerance of 0.000001f
      */
     default boolean isZero(){
         return Math.abs(len2()) <= 0.000001f;
@@ -127,9 +129,9 @@ public interface PointN<P extends PointN<P>> {
     }
 
     /**
-     * Returns true if the distance from the origin to this point is 0 (within the given tolerance up or down).
+     * Returns true if the squared distance from the origin to this point is 0 (within the given tolerance up or down).
      * @param tolerance how much floating-point error to tolerate and still treat this as equal to 0
-     * @return true if this point has distance 0 from the origin, within the given tolerance
+     * @return true if this point has squared distance 0 from the origin, within the given tolerance
      */
     default boolean isZero(float tolerance){
         return Math.abs(len2()) <= tolerance;

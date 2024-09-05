@@ -6,7 +6,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.29.0'
     }
 }
 
@@ -35,6 +35,15 @@ if (JavaVersion.current().isJava8Compatible()) {
         }
     }
 }
+
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+
+mavenPublishing {
+    configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
+}
+
+mavenPlainJavadocJar.archiveBaseName.set("$projectName")
 
 compileJava {
     sourceCompatibility = 8
