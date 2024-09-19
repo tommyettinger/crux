@@ -20,6 +20,15 @@ group 'com.github.tommyettinger'
 
 version "$VERSION_NAME" // You can set the version in gradle.properties .
 
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+
+mavenPublishing {
+    configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
+}
+
+mavenPlainJavadocJar.archiveBaseName.set(projectName)
+
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
 // Disable JDK 8's doclint
@@ -35,15 +44,6 @@ if (JavaVersion.current().isJava8Compatible()) {
         }
     }
 }
-
-import com.vanniktech.maven.publish.JavaLibrary
-import com.vanniktech.maven.publish.JavadocJar
-
-mavenPublishing {
-    configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
-}
-
-mavenPlainJavadocJar.archiveBaseName.set("$projectName")
 
 compileJava {
     sourceCompatibility = 8
@@ -61,8 +61,10 @@ compileTestJava {
     }
 }
 
+apply plugin: 'idea'
+idea.module.excludeDirs += [file("docs/")]
+
 // JavaDocs will be published inside the docs/ folder, which you can easily put on GitHub Pages in your repo settings.
-// You may instead want to remove this line if frequent doc changes use up too much repo space.
 javadoc.destinationDir = file('docs/apidocs')
 
 jar {
