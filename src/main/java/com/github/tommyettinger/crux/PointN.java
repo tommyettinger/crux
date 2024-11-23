@@ -84,6 +84,30 @@ public interface PointN<P extends PointN<P>> {
     P scl(P point);
 
     /**
+     * Subtracts {@code scalar} from the components in this, and returns a point with the subtracted values.
+     * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * @param scalar a single float to subtract from each component in this
+     * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
+     */
+    P sub(float scalar);
+
+    /**
+     * Adds {@code scalar} to the components in this, and returns a point with the added values.
+     * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * @param scalar a single float to add to each component in this
+     * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
+     */
+    P add(float scalar);
+
+    /**
+     * Multiplies {@code scalar} with each component in this, and returns a point with the multiplied values.
+     * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * @param scalar a single float to multiply with each component in this
+     * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
+     */
+    P scl(float scalar);
+
+    /**
      * Gets the distance from this point to the parameter {@code point}, using Euclidean distance, as a float.
      * @param point another point of the same type; will not be modified
      * @return the distance from this point to the parameter, using Euclidean distance, as a float
@@ -99,6 +123,16 @@ public interface PointN<P extends PointN<P>> {
      * @return the distance from this point to the parameter, using squared Euclidean distance, as a float
      */
     float dst2(P point);
+
+    /**
+     * Normalizes this point in-place, making its length as close to 1.0 as this can get.
+     * This only really makes sense for float components (where {@link #floatingPoint()} is true).
+     *
+     * @return this point after modifications, if possible, or a new edited point if this is immutable
+     */
+    default P nor() {
+        return scl(1f/len());
+    }
 
     /**
      * Returns true if the squared distance from the origin to this point is 1 (within floating-point error of
@@ -125,7 +159,6 @@ public interface PointN<P extends PointN<P>> {
      */
     default boolean isZero(){
         return Math.abs(len2()) <= 0.000001f;
-
     }
 
     /**

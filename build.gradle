@@ -62,6 +62,7 @@ compileTestJava {
 }
 
 apply plugin: 'idea'
+// This makes IDEA avoid including generated JavaDocs (which are HTML files) in any search results.
 idea.module.excludeDirs += [file("docs/")]
 
 // JavaDocs will be published inside the docs/ folder, which you can easily put on GitHub Pages in your repo settings.
