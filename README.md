@@ -48,10 +48,10 @@ api "com.github.tommyettinger:crux:$cruxVersion"
 where `cruxVersion` is often defined in `gradle.properties` with
 
 ```
-cruxVersion=0.1.1
+cruxVersion=0.1.2
 ```
 
-You could instead replace any occurrences of `$cruxVersion` with `0.1.1` .
+You could instead replace any occurrences of `$cruxVersion` with `0.1.2` .
 
 To depend on this on GWT, in addition to the earlier dependency in your core module
 (assuming a libGDX project), you would have this dependency in your html module:
