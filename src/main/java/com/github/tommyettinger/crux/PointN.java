@@ -86,26 +86,35 @@ public interface PointN<P extends PointN<P>> {
     /**
      * Subtracts {@code scalar} from the components in this, and returns a point with the subtracted values.
      * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * <br>
+     * This is named differently from {@link #sub(PointN)} to match the naming in {@link #plus(float)}.
+     *
      * @param scalar a single float to subtract from each component in this
      * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
      */
-    P sub(float scalar);
+    P minus(float scalar);
 
     /**
      * Adds {@code scalar} to the components in this, and returns a point with the added values.
      * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * <br>
+     * This is named differently from {@link #add(PointN)} to avoid name clashes with add() in Collection types.
+     *
      * @param scalar a single float to add to each component in this
      * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
      */
-    P add(float scalar);
+    P plus(float scalar);
 
     /**
      * Multiplies {@code scalar} with each component in this, and returns a point with the multiplied values.
      * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * <br>
+     * This is named differently from {@link #scl(PointN)} to match the naming in {@link #plus(float)}.
+     *
      * @param scalar a single float to multiply with each component in this
      * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
      */
-    P scl(float scalar);
+    P times(float scalar);
 
     /**
      * Gets the distance from this point to the parameter {@code point}, using Euclidean distance, as a float.
@@ -131,7 +140,7 @@ public interface PointN<P extends PointN<P>> {
      * @return this point after modifications, if possible, or a new edited point if this is immutable
      */
     default P nor() {
-        return scl(1f/len());
+        return times(1f/len());
     }
 
     /**
