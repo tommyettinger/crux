@@ -31,6 +31,12 @@ public class PathSmoother<V extends PointN<V>> {
 }
 ```
 
+You may want the more specialized library [gdcrux](https://github.com/tommyettinger/gdcrux), which extends existing
+types from [libGDX](https://libgdx.com) when possible, but also implements crux interfaces. You might also be after a
+different specialization using [digital](https://github.com/tommyettinger/digital) for core methods, which can be found
+in [SquidSquad](https://github.com/yellowstonegames/SquidSquad), specifically its SquidGrid submodule. If you stick to
+methods defined in crux, these two specializations can interoperate.
+
 ## Installation
 
 The main way should be via Maven Central, where most libraries in the JVM ecosystem
@@ -42,10 +48,10 @@ api "com.github.tommyettinger:crux:$cruxVersion"
 where `cruxVersion` is often defined in `gradle.properties` with
 
 ```
-cruxVersion=0.1.0
+cruxVersion=0.1.1
 ```
 
-You could instead replace any occurrences of `$cruxVersion` with `0.1.0` .
+You could instead replace any occurrences of `$cruxVersion` with `0.1.1` .
 
 To depend on this on GWT, in addition to the earlier dependency in your core module
 (assuming a libGDX project), you would have this dependency in your html module:
