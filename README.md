@@ -1,4 +1,12 @@
 # crux
+
+## tl;dr
+
+If you already know you need this, this is the Gradle dependency:
+```gradle
+api "com.github.tommyettinger:crux:0.1.3"
+```
+
 ## Shared interfaces for point types
 
 This library provides some small interfaces meant to be shared by (subclasses of)
@@ -31,6 +39,12 @@ public class PathSmoother<V extends PointN<V>> {
 }
 ```
 
+There are also `PointNFloat` and `PointNInt` interfaces for point types that
+specifically store their components as `int`s or `float`s. These don't add
+much functionality to `PointN`, but do provide `get()` and `setAt()` methods
+that return or take the appropriate primitive type. These methods allow looking
+up a coordinate by its index, rather than its name.
+
 You may want the more specialized library [gdcrux](https://github.com/tommyettinger/gdcrux), which extends existing
 types from [libGDX](https://libgdx.com) when possible, but also implements crux interfaces. You might also be after a
 different specialization using [digital](https://github.com/tommyettinger/digital) for core methods, which can be found
@@ -40,18 +54,19 @@ methods defined in crux, these two specializations can interoperate.
 ## Installation
 
 The main way should be via Maven Central, where most libraries in the JVM ecosystem
-tend to be downloaded from. The dependency is
+tend to be downloaded from. The dependency, which goes in the dependencies block of
+your core/build.gradle project if it is a typical libGDX project, is:
 
-```
+```gradle
 api "com.github.tommyettinger:crux:$cruxVersion"
 ```
 where `cruxVersion` is often defined in `gradle.properties` with
 
 ```
-cruxVersion=0.1.2
+cruxVersion=0.1.3
 ```
 
-You could instead replace any occurrences of `$cruxVersion` with `0.1.2` .
+You could instead replace any occurrences of `$cruxVersion` with `0.1.3` .
 
 To depend on this on GWT, in addition to the earlier dependency in your core module
 (assuming a libGDX project), you would have this dependency in your html module:
