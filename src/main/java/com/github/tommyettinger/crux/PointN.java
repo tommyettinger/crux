@@ -38,10 +38,18 @@ public interface PointN<P extends PointN<P>> {
      */
     P cpy();
 
+    /**
+     * Gets the magnitude of this point (or the distance between it and the origin).
+     * @return the magnitude of this point
+     */
     default float len() {
         return (float) Math.sqrt(len2());
     }
 
+    /**
+     * Gets the squared magnitude of this point (or the squared distance between it and the origin).
+     * @return the squared magnitude of this point
+     */
     float len2();
 
     /**
@@ -84,6 +92,14 @@ public interface PointN<P extends PointN<P>> {
     P scl(P point);
 
     /**
+     * Divides the components in this by those in {@code point}, and returns a point with the divided values.
+     * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * @param point another point of the same type; will not be modified
+     * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
+     */
+    P div(P point);
+
+    /**
      * Subtracts {@code scalar} from the components in this, and returns a point with the subtracted values.
      * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
      * <br>
@@ -115,6 +131,17 @@ public interface PointN<P extends PointN<P>> {
      * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
      */
     P times(float scalar);
+
+    /**
+     * Divides each component in this by {@code scalar}, and returns a point with the divided values.
+     * For mutable points, this changes the value in-place, and for immutable points, it returns a different point.
+     * <br>
+     * This is named differently from {@link #div(PointN)} to match the naming in {@link #plus(float)}.
+     *
+     * @param scalar a single float to divide each component in this by
+     * @return if this is mutable, then this value after editing; if this is immutable, then a different edited point
+     */
+    P divide(float scalar);
 
     /**
      * Gets the distance from this point to the parameter {@code point}, using Euclidean distance, as a float.
