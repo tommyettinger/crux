@@ -10,6 +10,11 @@ package com.github.tommyettinger.crux;
  * @param <R> should be a wildcard-generic type for a sub-interface of {@link PointN}, such as {@code Point3<?>}
  */
 public interface PointNFloat<P extends PointNFloat<P, R>, R extends PointN<?>> extends PointN<P> {
+    /**
+     * This type does natively use floating-point components, so
+     * this returns true.
+     * @return true
+     */
     @Override
     default boolean floatingPoint() {
         return true;
