@@ -2,11 +2,11 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
-        maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+        maven { url = 'https://central.sonatype.com/repository/maven-snapshots/' }
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.34.0'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.35.0'
     }
 }
 
@@ -16,7 +16,7 @@ apply plugin: 'com.vanniktech.maven.publish'
 //Obviously, change the next line to match your project name.
 def projectName = 'crux'
 
-group 'com.github.tommyettinger'
+group = 'com.github.tommyettinger'
 
 version "$VERSION_NAME" // You can set the version in gradle.properties .
 
@@ -81,10 +81,10 @@ repositories {
     mavenCentral()
     google()
     // This is the "new" snapshots repo on Maven Central, which seems to be mostly-reliable now.
-    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+    maven { url = 'https://central.sonatype.com/repository/maven-snapshots/' }
     // JitPack is a good repo to have if you depend on commit versions.
     // Having the below repo might cause problems if uploading to Maven Central.
-    maven { url 'https://jitpack.io' }
+    maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
